@@ -1,8 +1,200 @@
-/*
-COLORS:
+/* CSS Reset so every browser will render our page same */
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+/* Universal selector */
+* {
+  margin: 0;
+  padding: 0;
+  /* Box model margins and paddings are  not added to width and heigth */
+  box-sizing: border-box;
+}
 
-*/
+body {
+  /* Global fonts are referenced inside the body tag*/
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url("../img/hero.jpg");
+  background-size: cover;
+  /* Where image is being cropped on resize */
+  /* top */
+  /* center */
+  /* bottom */
+  background-position: top;
+  /* Clips the part of the image we want to display */
+  /* /* clip-path:(x y,x y,x y) -> top left  top right -> bottom right -> bottom left */
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+/* Vertical and horizontal center aligment using absolute positiong */
+.text-box {
+    position: absolute;
+    top: 40%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+ 
+}
+.heading-primary{
+    color:white;
+    text-transform: uppercase;
+    /* Prevents changes when children animate */
+    backface-visibility: hidden;
+    margin-bottom: 40px;
+}
+.heading-primary-main{
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveLeft;
+    animation-duration:  1s;
+
+    animation-timing-function: ease-out;
+
+/* How many times will animation will repat */
+    /* animation-iteration-count: 3; */
+/* Delays Animiation */
+    /* animation-delay: 3s; */
+}
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    /* All animation in one line */
+    animation: moveRight 1s ease-out;
+}
+
+/* CSS Animations */
+@keyframes moveLeft {
+    /* It is allways best to animate two paramaters opacity and transform */
+    /* Start */
+    0% {
+        opacity: 0;
+        transform: translateX(-100px)
+    }
+    80% {
+        transform: translateX(20px)
+    }
+
+    /* End */
+    100% {
+        transform: translate(0)
+        opacity: 1;
+    }
+}
+
+@keyframes moveRight {
+    /* It is allways best to animate two paramaters opacity and transform */
+    /* Start */
+    0% {
+        opacity: 0;
+        transform: translateX(100px)
+    }
+    80% {
+        transform: translateX(-20px)
+    }
+
+    /* End */
+    100% {
+        transform: translate(0)
+        opacity: 1;
+    }
+}
+
+@keyframes moveBottom {
+    /* It is allways best to animate two paramaters opacity and transform */
+    /* Start */
+    0% {
+        opacity: 0;
+        transform: translateY(100px)
+    }
+   
+    /* End */
+    100% {
+        transform: translate(0)
+        opacity: 1;
+    }
+}
+
+
+.btn:link,
+.btn:visited
+{
+text-transform: uppercase;
+text-decoration: none;
+padding: 15px 40px;
+display: inline-block;
+border-radius: 100px;
+backface-visibility: hidden;
+transition: all 0.2s;
+position: relative;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2)
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2)
+}
+
+.btn-white{
+    background-color: #fff;
+    color: #777;
+}
+
+ /* After sudo elements adds virtual element afte the selected */
+.btn::after {
+    /* Always need to specify this property */
+    content:"";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+    transition: all 0.2s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after{
+transform: scaleX(1.4) scaleY(1.6);
+opacity:0;
+}
+.btn-animated{
+    animation: moveBottom 0.5s ease-out .75s;
+
+    /* If we have the delay we can setup inital animation properties before it starts */
+    animation-fill-mode: backwards;
+}
