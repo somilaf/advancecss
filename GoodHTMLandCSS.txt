@@ -1,0 +1,85 @@
+1. RESPONISVE DESING
+
+---- Fluid layouts
+---- Media queries
+---- Responsive images
+---- Correct units
+---- Desktop first vs mobile
+
+
+2. MAINTAINABLE AND SCALABLE CODE
+
+---- Clean
+---- Easy-to-understand
+---- Growth
+---- Reusable
+---- How to orginize
+---- How to name classes
+---- How to structure HTML
+
+
+3. WEB PERFORMANCE
+
+---- Less HTTP requests
+---- Less CODE
+---- Compress CODE
+---- Use a CSS preprocessor
+---- Less images
+---- Compress images
+
+CSS CASCADE ----> process of combining different stylesheets and resolving conflicts between different CSS rules.
+
+CSS PRIORITY
+----Importance(weight) > specificty > source order
+
+    IMPORTANCE
+        1. User !important declarations
+        2. Author !important declarations -> background-color:blue !important; 
+        3. Author declarations -> background-color: blue;
+        4. User declarations
+        5. Deafult browser declarations
+
+If we have rules conflicting on the sam importance level specificty comes in play
+
+    SPECIFICITY
+        1. Inline styles
+        2. IDs
+        3. Classes, pseudo-classes, attribute
+        4. Elements, pseudo-elements
+
+If we have rules with same specificty the  its up to order.
+
+    SOURCE ORDER: last called wins it all
+
+Avoid using !important and inline-style use specificty.
+Use order only with 3th party CSS, your CSS should be called last;
+
+CSS UNITS - RELATIVE UNITS
+
+    % - kod fontova 150% * parent's  computed font-size ----------------> 24px
+    10% - kod sirine X% * parent's computed width ----------------------> 100px
+
+    em - za fontove x * parent's computed font-size --------------------> 72px (3 *24)
+    em - za length x * current element font-size -----------------------> 48px
+
+    rem - isto za font-length  x * root computed font-size -------------> 160px
+
+    vh - 90vh -------- x * 1% of viewport height ------------------------> 90% of the current VH
+    vw - 80wh -------- x * 1% of viewport width -------------------------> 80% of the current VW
+
+
+INHERITANCE ---> parent -> child we write less and get same result
+
+ THINK    -->     BUILD   -->   ARCHITECT 
+ Layout          Naming      files and folders
+
+ COMPONENT-DRIVEN DESIGN - modular + re-usable + independent
+
+ BEM SYSTEM
+ -- block standalone component .block{}
+ -- element part of the block that has no standalone meaning .block__element {}
+ -- modifier modifes the specific feature .block__element--modifier {}
+
+ ARCHITECTURE
+    7-1 PATTREN
+    7 different  folder partial Sass files

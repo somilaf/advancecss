@@ -1,21 +1,28 @@
 /* CSS Reset so every browser will render our page same */
 
 /* Universal selector */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   /* Box model margins and paddings are  not added to width and heigth */
-  box-sizing: border-box;
+  box-sizing: inherit;
+}
+html {
+    /* We know that 1rem = 10px */ 
+    font-size: 62.5% ;
 }
 
 body {
   /* Global fonts are referenced inside the body tag*/
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 1; */
   line-height: 1.7;
   color: #777;
-  padding: 30px;
+  padding: 3rem;
+  box-sizing: border-box;
 }
 
 .header {
@@ -38,18 +45,18 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
 /* Vertical and horizontal center aligment using absolute positiong */
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;
     left:50%;
@@ -64,11 +71,11 @@ body {
     backface-visibility: hidden;
     margin-bottom: 40px;
 }
-.heading-primary-main{
+.heading-primary--main{
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveLeft;
     animation-duration:  1s;
@@ -80,11 +87,11 @@ body {
 /* Delays Animiation */
     /* animation-delay: 3s; */
 }
-.heading-primary-sub{
+.heading-primary--sub{
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     /* All animation in one line */
     animation: moveRight 1s ease-out;
 }
@@ -147,24 +154,25 @@ body {
 {
 text-transform: uppercase;
 text-decoration: none;
-padding: 15px 40px;
+padding: 1.5rem 4rem;
 display: inline-block;
-border-radius: 100px;
+border-radius: 10rem;
 backface-visibility: hidden;
 transition: all 0.2s;
 position: relative;
+font-size: 1.6rem;
 }
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,.2)
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2)
 }
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0,.2)
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.2)
 }
 
-.btn-white{
+.btn--white{
     background-color: #fff;
     color: #777;
 }
@@ -176,7 +184,7 @@ position: relative;
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top:0;
     left:0;
@@ -184,7 +192,7 @@ position: relative;
     transition: all 0.2s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -192,7 +200,7 @@ position: relative;
 transform: scaleX(1.4) scaleY(1.6);
 opacity:0;
 }
-.btn-animated{
+.btn--animated{
     animation: moveBottom 0.5s ease-out .75s;
 
     /* If we have the delay we can setup inital animation properties before it starts */
