@@ -1,18 +1,56 @@
-/* CSS Reset so every browser will render our page same */
-
-/* Universal selector */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   /* Box model margins and paddings are  not added to width and heigth */
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
+
 html {
-    /* We know that 1rem = 10px */ 
-    font-size: 62.5% ;
-}
+  /* We know that 1rem = 10px */
+  font-size: 65%; }
+
+body {
+  /* Global fonts are referenced inside the body tag*/
+  box-sizing: border-box; }
+
+/* CSS Animations */
+@keyframes moveLeft {
+  /* It is allways best to animate two paramaters opacity and transform */
+  /* Start */
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); }
+  80% {
+    transform: translateX(20px); }
+  /* End */
+  100% {
+    transform: translate(0);
+    opacity: 1; } }
+
+@keyframes moveRight {
+  /* It is allways best to animate two paramaters opacity and transform */
+  /* Start */
+  0% {
+    opacity: 0;
+    transform: translateX(100px); }
+  80% {
+    transform: translateX(-20px); }
+  /* End */
+  100% {
+    transform: translate(0);
+    opacity: 1; } }
+
+@keyframes moveBottom {
+  /* It is allways best to animate two paramaters opacity and transform */
+  /* Start */
+  0% {
+    opacity: 0;
+    transform: translateY(100px); }
+  /* End */
+  100% {
+    transform: translate(0);
+    opacity: 1; } }
 
 body {
   /* Global fonts are referenced inside the body tag*/
@@ -21,18 +59,160 @@ body {
   /* font-size: 1; */
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
-  box-sizing: border-box;
-}
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* Prevents changes when children animate */
+  backface-visibility: hidden;
+  margin-bottom: 40px; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* How many times will animation will repat */
+    /* animation-iteration-count: 3; */
+    /* Delays Animiation */
+    /* animation-delay: 3s; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* All animation in one line */
+    animation: moveRight 1s ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: linear-gradient(to right, #7ed56f, #28b485);
+  display: inline-block;
+  -webkit-background-clip: text;
+  letter-spacing: 2px;
+  transition: .2s;
+  color: transparent; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(10deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 20px rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 8rem; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.btn {
+  /* After sudo elements adds virtual element afte the selected */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    backface-visibility: hidden;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    /* Always need to specify this property */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.2s; }
+  .btn--animated {
+    animation: moveBottom 0.5s ease-out 0.75s;
+    /* If we have the delay we can setup inital animation properties before it starts */
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transform: translateY(0); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+    position: absolute;
+    transition: all .2s;
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      z-index: 1;
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      z-index: 2;
+      right: 0;
+      top: -1rem; }
+    .composition__photo--p3 {
+      z-index: 3;
+      left: 20%;
+      top: 5rem; }
+    .composition__photo:hover {
+      z-index: 10;
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.3); }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.8); }
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 133, 0.8)
-    ),
-    url("../img/hero.jpg");
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
   background-size: cover;
   /* Where image is being cropped on resize */
   /* top */
@@ -42,167 +222,47 @@ body {
   /* Clips the part of the image we want to display */
   /* /* clip-path:(x y,x y,x y) -> top left  top right -> bottom right -> bottom left */
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  position: relative;
-}
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
-
-.header__logo {
-    height: 3.5rem;
-}
-
-/* Vertical and horizontal center aligment using absolute positiong */
-.header__text-box {
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
     position: absolute;
     top: 40%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
- 
-}
-.heading-primary{
-    color:white;
-    text-transform: uppercase;
-    /* Prevents changes when children animate */
-    backface-visibility: hidden;
-    margin-bottom: 40px;
-}
-.heading-primary--main{
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
-    animation-name: moveLeft;
-    animation-duration:  1s;
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem)/2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2* 6rem) / 3); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3* 6rem) /4); }
+  .row .col-2-of-3 {
+    width: calc(100% - ((100% - 2* 6rem) / 3) - 6rem); }
+  .row .col-2-of-4 {
+    width: calc(100% - (2*((100% - 3* 6rem) /4 )) - 2*6rem); }
+  .row .col-3-of-4 {
+    width: calc(100% - ((100% - 3* 6rem) /4 ) - 6rem); }
 
-    animation-timing-function: ease-out;
-
-/* How many times will animation will repat */
-    /* animation-iteration-count: 3; */
-/* Delays Animiation */
-    /* animation-delay: 3s; */
-}
-.heading-primary--sub{
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    /* All animation in one line */
-    animation: moveRight 1s ease-out;
-}
-
-/* CSS Animations */
-@keyframes moveLeft {
-    /* It is allways best to animate two paramaters opacity and transform */
-    /* Start */
-    0% {
-        opacity: 0;
-        transform: translateX(-100px)
-    }
-    80% {
-        transform: translateX(20px)
-    }
-
-    /* End */
-    100% {
-        transform: translate(0)
-        opacity: 1;
-    }
-}
-
-@keyframes moveRight {
-    /* It is allways best to animate two paramaters opacity and transform */
-    /* Start */
-    0% {
-        opacity: 0;
-        transform: translateX(100px)
-    }
-    80% {
-        transform: translateX(-20px)
-    }
-
-    /* End */
-    100% {
-        transform: translate(0)
-        opacity: 1;
-    }
-}
-
-@keyframes moveBottom {
-    /* It is allways best to animate two paramaters opacity and transform */
-    /* Start */
-    0% {
-        opacity: 0;
-        transform: translateY(100px)
-    }
-   
-    /* End */
-    100% {
-        transform: translate(0)
-        opacity: 1;
-    }
-}
-
-
-.btn:link,
-.btn:visited
-{
-text-transform: uppercase;
-text-decoration: none;
-padding: 1.5rem 4rem;
-display: inline-block;
-border-radius: 10rem;
-backface-visibility: hidden;
-transition: all 0.2s;
-position: relative;
-font-size: 1.6rem;
-}
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0,0,0,.2)
-}
-
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.2)
-}
-
-.btn--white{
-    background-color: #fff;
-    color: #777;
-}
-
- /* After sudo elements adds virtual element afte the selected */
-.btn::after {
-    /* Always need to specify this property */
-    content:"";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top:0;
-    left:0;
-    z-index: -1;
-    transition: all 0.2s;
-}
-
-.btn--white::after {
-    background-color: #fff;
-}
-
-.btn:hover::after{
-transform: scaleX(1.4) scaleY(1.6);
-opacity:0;
-}
-.btn--animated{
-    animation: moveBottom 0.5s ease-out .75s;
-
-    /* If we have the delay we can setup inital animation properties before it starts */
-    animation-fill-mode: backwards;
-}
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20rem; }

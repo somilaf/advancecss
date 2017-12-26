@@ -1,3 +1,7 @@
+
+npm install node-sass --save-dev
+
+
 SASSSSssssss
 
 - Variables: promenljive za boje, velicine fontova, razmake....
@@ -8,3 +12,56 @@ SASSSSssssss
 - Functions: za kreiranje css funkcija koje nam daju rezultat 
 - Extends: mogucnost da razliciti selektori uvoze dekleracije koje su im zajednicke 
 - Control directives: za pisanje kompleksnog koda sa petljama i ifovima
+
+
+
+////MIXINGS//////////////////////////////////////////////////////////////////////
+@mixin clearfix {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+@mixin style-link-text($color) {
+    text-decoratoion: none;
+    text-transform: uppercase;
+    color: $color;
+}
+
+nav{
+    margin:30px;
+    background-color: $color-primary;
+    ////////////////////
+    @include clearfix;
+    ///////////////////
+}
+
+btn 
+{
+/////////////////////////////////////////////
+@include style-text-light($color-text-dark);
+////////////////////////////////////////////
+}
+
+/////@FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@function devide($a,$b)
+{
+@return $a/$b;
+}
+
+////EXTENDS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+%btn-placeholder
+{
+padding: 16px;
+}
+
+.btn-main{
+    &:link {
+        @extend: %btn-placeholder;
+        background-color:$color-secondary;
+    }
+}

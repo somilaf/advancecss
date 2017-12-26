@@ -1,0 +1,38 @@
+.composition {
+    position: relative;
+ 
+  &__photo {
+    // Flexible image it is good to define in %
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+    position: absolute;
+    transition: all .2s;
+    outline-offset: 2rem;
+    &--p1 {
+      z-index: 1;
+      left:0;
+      top:-2rem;
+    }
+    &--p2 {
+      z-index: 2;
+      right:0;
+      top:-1rem;
+    }
+    &--p3 {
+      z-index: 3;
+      left:20%;
+      top:5rem;
+    }
+    
+    &:hover{
+        z-index: 10;
+        outline: 1.5rem solid $color-primary;
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 2.5rem 4rem rgba($color-black, 0.3);
+    }
+  }
+
+  &:hover &__photo:not(:hover){
+      transform: scale(.8);
+  }
+}

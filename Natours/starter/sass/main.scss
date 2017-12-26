@@ -1,0 +1,25 @@
+// 7 - 1 SCSS PATTERN
+
+// Abstract Folder holdes all non CSS staff
+@import "./abstract/_functions";
+@import "./abstract/_mixins";
+@import "./abstract/_variables.scss";
+
+//Base Folder holdes all primary app styles
+
+// Base holdes general css rules for our app *, html, body
+@import "base/base";
+// All animationes related CSS
+@import "base/_animations";
+@import "base/_typography";
+@import "base/_utilities";
+
+//Components
+@import "components/_button";
+@import "components/_composition";
+
+//Layouts
+@import "layout/_header";
+@import "layout/_grid";
+
+@import "pages/_home";

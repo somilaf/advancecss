@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* Box model margins and paddings are  not added to width and heigth */
+  box-sizing: inherit;
+}
+html {
+  /* We know that 1rem = 10px */
+  font-size: 65%;
+}
+
+body {
+  /* Global fonts are referenced inside the body tag*/
+  box-sizing: border-box;
+}

@@ -1,0 +1,51 @@
+/* CSS Animations */
+@keyframes moveLeft {
+    /* It is allways best to animate two paramaters opacity and transform */
+    /* Start */
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    80% {
+      transform: translateX(20px);
+    }
+  
+    /* End */
+    100% {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes moveRight {
+    /* It is allways best to animate two paramaters opacity and transform */
+    /* Start */
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    80% {
+      transform: translateX(-20px);
+    }
+  
+    /* End */
+    100% {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes moveBottom {
+    /* It is allways best to animate two paramaters opacity and transform */
+    /* Start */
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+  
+    /* End */
+    100% {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
